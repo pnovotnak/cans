@@ -1,0 +1,25 @@
+{% extends 'ui/library.html' %}
+
+{% load static %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-5">
+      <img src="/m/{{ artist.image }}" style="max-width: 100%;">
+      {{ artist.description|safe }}
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-7">
+      <div class="row">
+      {% for release_group in artist.releasegroup_set.all %}
+        {% for release in release_group.release_set.all %}
+          <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+            <a href="/release/{{ release.pk }}">
+              <img src="/m/{{ release.image }}" style="max-width: 100%;">
+            </a>
+          </div>
+        {% endfor %}
+      {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

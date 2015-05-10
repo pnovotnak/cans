@@ -1,0 +1,31 @@
+{% extends 'ui/library.html' %}
+
+{% load static %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-xs-11 col-md-5 col-lg-4">
+      <div class="row text-center">
+        <img src="/m/{{ release.image }}" style="max-width: 100%; margin: 0 auto;">
+      </div>
+      {{ release.description|safe }}
+    </div>
+    <div class="hidden-xs col-sm-1"></div>
+    <div class="col-xs-12 col-md-6 col-lg-7">
+      {% for track in release.track_set.all %}
+        <div class="row track {% cycle 'odd' '' %}">
+          <div class="col-xs-1">
+            {{ track.number }}
+          </div>
+          <div class="col-xs-9">
+            {{ track.name }}
+          </div>
+          <div class="col-xs-2">
+            {{ track.human_length }}
+          </div>
+        </div>
+      {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

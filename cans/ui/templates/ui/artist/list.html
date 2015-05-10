@@ -1,0 +1,20 @@
+{% extends 'ui/library.html' %}
+
+{% load static %}
+
+{% block content %}
+  {% for artist in object_list %}
+    <div class="col-sm-12 col-md-4 col-lg-2">
+      {% if artist.image %}
+        <a href="{% url 'ui:artist' artist.pk %}">
+          <img style="max-width: 100%;" src="/m/{{ artist.image }}">
+          <p>{{ artist.name }}</p>
+        </a>
+      {% else %}
+        <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
+      {% endif %}
+    </div>
+  {% empty %}
+      <li>Nothing in your library yet!</li>
+  {% endfor %}
+{% endblock %}

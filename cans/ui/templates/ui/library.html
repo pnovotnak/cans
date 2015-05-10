@@ -1,0 +1,10 @@
+{% extends 'ui/base.html' %}
+
+{% block content %}
+{% for object in object_list %}
+  <div class="col-sm-12 col-md-4 col-lg-2">
+  </div>
+{% empty %}
+    <li>Nothing in your library yet!</li>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,7 @@
+.page-header {
+    margin-top: 64px;
+}
+
+.row.track.odd {
+    background-color: #DDD;
+}
