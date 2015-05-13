@@ -6,7 +6,7 @@
   {% for artist in object_list %}
     <div class="col-sm-12 col-md-4 col-lg-2">
       {% if artist.image %}
-        <a href="{% url 'ui:artist' artist.pk %}">
+        <a href="{% url 'ui:artist:detail' artist.pk %}">
           <img style="max-width: 100%;" src="/m/{{ artist.image }}">
           <p>{{ artist.name }}</p>
         </a>

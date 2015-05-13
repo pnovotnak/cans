@@ -1,11 +1,15 @@
 from django.views.generic import ListView, DetailView
+from django.views.generic.edit import FormView
 
 from data.models import Artist, ReleaseGroup, Release
+from .forms import SearchForm
 
 from django.core.urlresolvers import reverse
 
 
 class LibraryView(ListView):
+    """ An index view for your library.
+    """
 
     template_name = 'ui/artist/list.html'
     model = Artist
@@ -19,6 +23,8 @@ class LibraryView(ListView):
 
 
 class ArtistView(DetailView):
+    """ Artist view. Show artist info and their material.
+    """
 
     template_name = 'ui/artist/detail.html'
     model = Artist
@@ -32,6 +38,10 @@ class ArtistView(DetailView):
 
 
 class ReleaseGroupView(DetailView):
+    """ The logical child of the ArtistView.
+
+    Show a list of releases in a release group.
+    """
 
     template_name = 'ui/release/list.html'
     model = ReleaseGroup
@@ -51,6 +61,8 @@ class ReleaseGroupView(DetailView):
 
 
 class ReleaseView(DetailView):
+    """ Show details about a release.
+    """
 
     template_name = 'ui/release/detail.html'
     model = Release
@@ -73,9 +85,14 @@ class ReleaseView(DetailView):
         return context
 
 
-class SearchView(ListView):
+class SearchView(FormView):
+    """ A view that shows search results.
+
+    Since we have a search bar in the header, we don't need to include it on the page.
+    """
 
     template_name = 'ui/search/results.html'
+    form_class = SearchForm
 
-    def get_queryset(self, request):
-        
+    def form_valid(self, form):
+        return super(SearchView, self).form_valid(form)
