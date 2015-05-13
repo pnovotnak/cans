@@ -1,0 +1,20 @@
+{% extends 'ui/library.html' %}
+
+{% load static %}
+
+{% block content %}
+  <div class="row search">
+    <div class="col-xs-12">
+      {{ search.term }}
+    </div>
+    <div class="col-xs-12">
+      {% if search.results %}
+        {% for result in search.results %}
+          <div class="row">
+            {{ result }}
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

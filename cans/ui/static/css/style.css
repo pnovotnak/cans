@@ -5,3 +5,7 @@
 .row.track.odd {
     background-color: #DDD;
 }
+
+.image {
+    max-width: 100%;
+}

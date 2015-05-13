@@ -12,15 +12,30 @@ class NamedModel(models.Model):
         abstract = True
 
 
+class Queue(models.Model):
+    """ A basic task queue.
+
+    Tasks are given a priority between 1 (highest) and 10 (lowest)
+    """
+
+    priority_choices = zip(range(1, 10), range(1, 10))
+
+    action = models.TextField()
+    priority = models.SmallIntegerField(default=5, choices=priority_choices)
+
+
 class Artist(NamedModel):
 
     description = models.TextField()
     image = models.ImageField(upload_to='artist_images', blank=True, null=True)
+    mbid = models.CharField(max_length=255)  # MusicBrainz id
 
 
 class ReleaseGroup(NamedModel):
 
     artist = models.ForeignKey('Artist')
+    description = models.TextField(blank=True, null=True)
+    image = models.ImageField(blank=True, null=True)
 
 
 class Release(NamedModel):

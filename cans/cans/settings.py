@@ -95,6 +95,24 @@ USE_L10N = True
 
 USE_TZ = True
 
+MUSICBRAINZ = {
+    'URL': 'http://musicbrainz.org/ws/2/',
+    'HEADERS': {
+        'User-Agent': 'Cans/0.0.1 (+https://github.com/pnovotnak/cans)'
+    },
+    'PARAMS': {
+        'inc': 'aliases',
+        'fmt': 'json'
+    }
+}
+
+LASTFM = {
+    'URL': 'http://ws.audioscrobbler.com/2.0/',
+    'PARAMS': {
+        'api_key': '28c3b0ebf5296ff1b6b3e1d0b4d4342d',
+        'format': 'json',
+    }
+}
 
 STATIC_URL = '/s/'
 MEDIA_URL = '/m/'

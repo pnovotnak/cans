@@ -3,10 +3,16 @@
 {% load static %}
 
 {% block content %}
-  <div class="row">
+  <div class="row release">
     <div class="col-xs-11 col-md-5 col-lg-4">
       <div class="row text-center">
-        <img src="/m/{{ release.image }}" style="max-width: 100%; margin: 0 auto;">
+        {% if release.image %}
+          <img src="/m/{{ release.image }}" class="image">
+        {% elif release.release_group.image %}
+          <img src="/m/{{ release.release_group.image }}" class="image">
+        {% else %}
+          <img src="#" class="image">
+        {% endif %}
       </div>
       {{ release.description|safe }}
     </div>
